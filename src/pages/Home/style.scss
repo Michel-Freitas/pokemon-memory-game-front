@@ -1,7 +1,8 @@
 @import '../../assets//styles/index.scss';
 
 .home  {
-    background-color: #a79b9b;
+    background-image: url('../../assets//images/pokeball.jpeg');
+    background-position: center;
 
     .home__header {
         display: flex;
@@ -13,6 +14,9 @@
 
             h1 {
                 margin:  0px;
+                color: #e22828;
+                font-family: $font-pokefont-solid;
+                text-shadow: 2px 2px 3px #ffffff;
             }
         }
 
@@ -41,8 +45,12 @@
         }
     }
 
-    @media screen and (min-width: $break-xl) {
+    @media screen and (min-width: $break-width-xl) {
         height: 100vh;
+    }
+
+    @media screen and (max-height: $break-height) {
+        height: auto;
     }
 }
 
