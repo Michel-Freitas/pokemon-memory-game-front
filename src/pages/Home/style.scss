@@ -14,9 +14,9 @@
 
             h1 {
                 margin:  0px;
-                color: #e22828;
+                color: $color-red-2;
                 font-family: $font-pokefont-solid;
-                text-shadow: 2px 2px 3px #ffffff;
+                text-shadow: 2px 2px 3px $color-write;
             }
         }
 
@@ -29,8 +29,6 @@
 
         .memoryBoard {
             width: 80vw;
-            border: 1px solid red;
-
             display: flex;
             flex-wrap: wrap;
             justify-content: center;

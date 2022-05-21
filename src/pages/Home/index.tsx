@@ -1,4 +1,5 @@
 import React from "react";
+import InputSelect from "../../components/InputSelect";
 
 import "./style.scss";
 
@@ -9,15 +10,7 @@ const Home: React.FC = () => {
                 <div className="header__title">
                     <h1>Jogo da Memória</h1>
                 </div>
-                <div className="home__inputSelect">
-                    <select name="" id="">
-                        <option value="">A</option>
-                        <option value="">A</option>
-                        <option value="">A</option>
-                        <option value="">A</option>
-                        <option value="">A</option>
-                    </select>
-                </div>
+                <InputSelect />
             </div>
             <div className="home__body">
                 <div className="memoryBoard">
