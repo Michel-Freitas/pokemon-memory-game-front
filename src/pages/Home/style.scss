@@ -1,0 +1,48 @@
+@import '../../assets//styles/index.scss';
+
+.home  {
+    background-color: #a79b9b;
+
+    .home__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 50px;
+
+        .header__title {
+
+            h1 {
+                margin:  0px;
+            }
+        }
+
+    }
+
+    .home__body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .memoryBoard {
+            width: 80vw;
+            border: 1px solid red;
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+
+            .memoryBoard__item {
+                border: 1px solid;
+                width: 140px;
+                height: 150px;
+
+            }
+        }
+    }
+
+    @media screen and (min-width: $break-xl) {
+        height: 100vh;
+    }
+}
+
