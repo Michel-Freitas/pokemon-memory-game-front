@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { ArrowIcon } from "../../assets/icons";
+import { EggGroup } from "../../schemas/PokemonSchemas";
 
 import "./style.scss";
 
-const  InputSelect: React.FC = () => {
+type InputSelect = {
+    data: EggGroup[]
+}
+
+const  InputSelect: React.FC<InputSelect> = (props) => {
 
     const [listIsVisible, setListIsVisible] = useState<boolean>(false);
 
@@ -22,11 +27,9 @@ const  InputSelect: React.FC = () => {
                 <ArrowIcon color="#9b0e0e"/>
             </button>
             <ul className={`inputSelectList ${listIsVisible && "inputSelectList-show"}`}>
-                <li className="inputSelectList__item" onClick={() => selectItem('1')}>Monster</li>
-                <li className="inputSelectList__item" onClick={() => selectItem('2')}>Water1</li>
-                <li className="inputSelectList__item" onClick={() => selectItem('3')}>Bug</li>
-                <li className="inputSelectList__item" onClick={() => selectItem('4')}>Flying</li>
-                <li className="inputSelectList__item" onClick={() => selectItem('5')}>ground</li>
+                {props.data.map((item) => {
+                    return <li key={item.name} className="inputSelectList__item" onClick={() => selectItem('1')}>{item.name}</li>
+                })}
             </ul>
         </div>
     )
