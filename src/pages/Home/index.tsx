@@ -19,13 +19,24 @@ const Home: React.FC = () => {
         })();
     }, []);
 
+    function selectedEggGroup(name: string) {
+        setEggGroups((state) => {
+            return state.map((item) => {
+                return item.name === name ? {...item, checked: !item.checked} : {...item, checked: false}
+            })
+        })
+    }
+
     return (
         <div className="home">
             <div className="home__header">
                 <div className="header__title">
                     <h1>Jogo da Memória</h1>
                 </div>
-                <InputSelect data={eggGroups}/>
+                <InputSelect
+                    data={eggGroups}
+                    onChange={selectedEggGroup}
+                />
             </div>
             <div className="home__body">
                 <MemoryBoard />

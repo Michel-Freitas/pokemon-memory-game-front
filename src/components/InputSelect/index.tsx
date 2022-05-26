@@ -6,16 +6,14 @@ import "./style.scss";
 
 type InputSelect = {
     data: EggGroup[]
+    onChange: (name: string) => void
 }
 
 const  InputSelect: React.FC<InputSelect> = (props) => {
 
     const [listIsVisible, setListIsVisible] = useState<boolean>(false);
 
-    function selectItem(id: string) {
-        setListIsVisible(false)
-        alert(id);
-    }
+    const selectedData = props.data.find((item) => item.checked === true);
 
     return (
         <div className="inputSelect">
@@ -23,12 +21,12 @@ const  InputSelect: React.FC<InputSelect> = (props) => {
                 className="inputSelect__btn"
                 onClick={() => setListIsVisible((state) => !state)}
             >
-                Select
+                {selectedData ? selectedData.name : "Select"}
                 <ArrowIcon color="#9b0e0e"/>
             </button>
             <ul className={`inputSelectList ${listIsVisible && "inputSelectList-show"}`}>
                 {props.data.map((item) => {
-                    return <li key={item.name} className="inputSelectList__item" onClick={() => selectItem('1')}>{item.name}</li>
+                    return <li key={item.name} className="inputSelectList__item" onClick={() => props.onChange(item.name)}>{item.name}</li>
                 })}
             </ul>
         </div>

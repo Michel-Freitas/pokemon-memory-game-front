@@ -16,7 +16,8 @@ export function usePokemonService() {
             const resultList: EggGroup[] = data.results.map((item: any)=> {
                 return {
                     name: item.name,
-                    url: item.url
+                    url: item.url,
+                    checked: false
                 }
             });
 
