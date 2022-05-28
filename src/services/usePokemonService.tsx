@@ -1,9 +1,9 @@
 import { api } from "../config/axiosConfig"
-import { EggGroup } from "../schemas/PokemonSchemas";
+import { IEggGroup, IPokemon } from "../schemas/PokemonSchemas";
 
 export function usePokemonService() {
 
-    const eggGroups = async (parameter?: string): Promise<EggGroup[] | []> => {
+    const eggGroups = async (parameter?: string): Promise<IEggGroup[] | []> => {
         try {
             let query:string = "egg-group/";
 
@@ -13,21 +13,54 @@ export function usePokemonService() {
 
             if(!data) return [];
 
-            const resultList: EggGroup[] = data.results.map((item: any)=> {
+            let resultList: IEggGroup[] = [];
+
+            if (parameter) {
+                resultList = data.pokemon_species.map((item: any)=> {
+                    return {
+                        name: item.name,
+                        url: item.url,
+                        checked: false
+                    }
+                });
+                return resultList;
+            }
+
+            resultList = data.results.map((item: any)=> {
                 return {
                     name: item.name,
                     url: item.url,
                     checked: false
                 }
             });
-
             return resultList;
         } catch (error) {
             return [];
         }
     }
 
+    const pokemon = async (nameOrId: string): Promise<IPokemon | undefined> => {
+        try {
+            
+            const { data } = await api.get(`pokemon/${nameOrId}`);
+
+            if (!data) return;
+
+            const pokemon: IPokemon = {
+                name: data.name,
+                imageUrl: data.sprites.other.dream_world.front_default,
+                checked: false
+            }
+
+            return pokemon;
+
+        } catch (error) {
+            return;
+        }
+    }
+
     return {
-        eggGroups
+        eggGroups,
+        pokemon
     }
 }

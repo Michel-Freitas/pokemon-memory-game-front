@@ -1,30 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import "./style.scss";
 import pokeball from "../../../assets/images/icon-pokebola.png";
+import { IPokemonMemoryBoard } from "../../../schemas/PokemonSchemas";
 
-const MemoryBoard: React.FC = () => {
+type MemoryBoard = {
+    data: IPokemonMemoryBoard[]
+    onSelectCard: (id: number) => void
+}
 
-    const [selectCard, setSelectCard] = useState<number[]>([]);
-
-    function onSelectCard(id: number) {
-        if (selectCard.length === 2) return;
-        setSelectCard((state) => [...state, id]);
-    }
+const MemoryBoard: React.FC<MemoryBoard> = (props) => {
 
     function viewList() {
-        const array = Array.from(Array(20).keys());
-        return array.map((item) => {
+        return props.data.map((item) => {
             return (
                 <div
-                    key={item}
-                    className={`memoryBoard__item memoryBoard__item-${selectCard.includes(item) ? "front" :"back"}`}
-                    onClick={() => onSelectCard(item)}
+                    key={item.id}
+                    className={`memoryBoard__item memoryBoard__item-${item.checked ? "front" :"back"}`}
+                    onClick={() => props.onSelectCard(item.id)}
                 >
                     <div className="memoryBoard__item-border">
                         <div className="memoryBoard__item-inner">
-                            <p>{selectCard.includes(item) ? "Bulbasaur" :"Pokemon"}</p>
-                            <img src={selectCard.includes(item) ? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" : pokeball} alt="Pokeboll Icon" />
+                            <p>{item.checked ? item.name :"Pokemon"}</p>
+                            <img src={item.checked ? item.imageUrl : pokeball} alt="Pokeboll Icon" />
                         </div>
                     </div>
                 </div>
