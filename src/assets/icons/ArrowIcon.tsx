@@ -1,9 +1,9 @@
 import React from "react";
 
 export const ArrowIcon = ({
-    height = "9px",
-    width = "12px",
-    color = "#EE9430"
+  height = "9px",
+  width = "12px",
+  color = "#EE9430"
 }: React.SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
     width={width}

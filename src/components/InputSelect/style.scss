@@ -1,48 +1,48 @@
 @import '../../assets/styles/index.scss';
 
 .inputSelect {
-    width: 285px;
-    height: 48px;
+  width: 285px;
+  height: 48px;
 
-    .inputSelect__btn {
-        width: 100%;
-        height: 100%;
-        background-color: $color-write;
-        color: $color-red-1;
-        border-radius: 5px;
-        border: 1px solid $color-red-1;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+  .inputSelect__btn {
+    width: 100%;
+    height: 100%;
+    background-color: $color-write;
+    color: $color-red-1;
+    border-radius: 5px;
+    border: 1px solid $color-red-1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        &:hover {
-            cursor: pointer;
-        }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .inputSelectList {
+    background-color: $color-write;
+    border-radius: 5px;
+    list-style: none;
+    margin: 4px 0px 0px 0px;
+    padding: 0px;
+    display: none;
+    width: 100%;
+    position: relative;
+
+    .inputSelectList__item {
+      padding-left: 10px;
+      font-family: $font-pokefont-solid;
+      font-size: 0.8rem;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $color-red-3;
+      }
     }
 
-    .inputSelectList {
-        background-color: $color-write;
-        border-radius: 5px;
-        list-style: none;
-        margin: 4px 0px 0px 0px;
-        padding: 0px;
-        display: none;
-        width: 100%;
-        position: relative;
-        
-        .inputSelectList__item {
-            padding-left: 10px;
-            font-family: $font-pokefont-solid;
-            font-size: 0.8rem;
-
-            &:hover {
-                cursor: pointer;
-                background-color: $color-red-3;
-            }
-        }
-
-        &.inputSelectList-show {
-            display: block;
-        }
+    &.inputSelectList-show {
+      display: block;
     }
+  }
 }

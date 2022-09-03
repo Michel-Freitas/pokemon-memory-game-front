@@ -1,47 +1,47 @@
 @import "../../../assets//styles//index.scss";
 
 .memoryBoard {
-    width: 80vw;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 32px;
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
 
-    .memoryBoard__item {
-        border: 1px solid;
-        width: 138px;
-        height: 200px;
-        border-radius: 10px;
-        padding: 4px;
-        cursor: pointer;
-        background-color: $color-black-1;
-        
-        .memoryBoard__item-border {
-            height: 98%;
-            border-radius: 10px;
-            padding: 2px;
-            background: linear-gradient(to bottom, $color-red-4, $color-blue-1);
-        }
+  .memoryBoard__item {
+    border: 1px solid;
+    width: 138px;
+    height: 200px;
+    border-radius: 10px;
+    padding: 4px;
+    cursor: pointer;
+    background-color: $color-black-1;
 
-        .memoryBoard__item-inner {
-            height: 100%;
-            background-color: $color-black-1;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-
-            > p {
-                color: $color-red-5;
-                font-size: 1.5rem;
-                font-family: $font-pokefont-solid;
-            }
-        }
-
-        &.memoryBoard__item-front {
-            img {
-                width: 65%;
-            }
-        }
+    .memoryBoard__item-border {
+      height: 98%;
+      border-radius: 10px;
+      padding: 2px;
+      background: linear-gradient(to bottom, $color-red-4, $color-blue-1);
     }
+
+    .memoryBoard__item-inner {
+      height: 100%;
+      background-color: $color-black-1;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      >p {
+        color: $color-red-5;
+        font-size: 1.5rem;
+        font-family: $font-pokefont-solid;
+      }
+    }
+
+    &.memoryBoard__item-front {
+      img {
+        width: 65%;
+      }
+    }
+  }
 }
