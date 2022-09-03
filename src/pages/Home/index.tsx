@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import InputSelect from "../../components/InputSelect";
+import Loader from "../../components/Loader";
 import { IEggGroup, IPokemon, IPokemonMemoryBoard } from "../../schemas/PokemonSchemas";
 import { usePokemonService } from "../../services/usePokemonService";
 import MemoryBoard from "./MemoryBoard";
@@ -12,6 +13,7 @@ const Home: React.FC = () => {
 
   const [eggGroups, setEggGroups] = useState<IEggGroup[]>([]);
   const [pokemonList, setPokemonList] = useState<IPokemonMemoryBoard[]>([]);
+  const [isOpenLoad, setIsOpenLoad] = useState<boolean>(false);
 
   const selectedGroup = eggGroups.find((item) => item.checked === true);
 
@@ -27,6 +29,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     if (!selectedGroup) return;
     (async () => {
+      setIsOpenLoad(true);
       let result = await pokemonService.eggGroups(selectedGroup.name);
       let listSelectedPokemon: IEggGroup[] = [];
       for (let index = 0; index < 10; index++) {
@@ -36,6 +39,7 @@ const Home: React.FC = () => {
       }
 
       await getPokemon(listSelectedPokemon);
+      setIsOpenLoad(false);
     })();
   }, [selectedGroup]);
 
@@ -83,7 +87,7 @@ const Home: React.FC = () => {
       return state.map((item) => {
         return item.name === name ? { ...item, checked: !item.checked } : { ...item, checked: false }
       })
-    })
+    });
   }
 
   function selectCard(id: number) {
@@ -114,6 +118,9 @@ const Home: React.FC = () => {
           onSelectCard={selectCard}
         />
       </div>
+      <Loader
+        isOpen={isOpenLoad}
+      />
     </div>
   )
 }

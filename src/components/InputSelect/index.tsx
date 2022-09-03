@@ -14,6 +14,11 @@ const InputSelect: React.FC<InputSelect> = (props) => {
 
   const [listIsVisible, setListIsVisible] = useState<boolean>(false);
 
+  function selectItem(name: string) {
+    props.onChange(name);
+    setListIsVisible((state) => !state);
+  }
+
   return (
     <div className="inputSelect">
       <button
@@ -25,7 +30,7 @@ const InputSelect: React.FC<InputSelect> = (props) => {
       </button>
       <ul className={`inputSelectList ${listIsVisible && "inputSelectList-show"}`}>
         {props.data.map((item) => {
-          return <li key={item.name} className="inputSelectList__item" onClick={() => props.onChange(item.name)}>{item.name}</li>
+          return <li key={item.name} className="inputSelectList__item" onClick={() => selectItem(item.name)}>{item.name}</li>
         })}
       </ul>
     </div>
