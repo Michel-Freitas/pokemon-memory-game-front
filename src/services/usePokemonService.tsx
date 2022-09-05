@@ -46,9 +46,13 @@ export function usePokemonService() {
 
       if (!data) return;
 
+      const imgUrl = data.sprites.other.dream_world.front_default != null
+      ? data.sprites.other.dream_world.front_default
+      : data.sprites.home.front_default;
+
       const pokemon: IPokemon = {
         name: data.name,
-        imageUrl: data.sprites.other.dream_world.front_default,
+        imageUrl: imgUrl,
         checked: false
       }
 

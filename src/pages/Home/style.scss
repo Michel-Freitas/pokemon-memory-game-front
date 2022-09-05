@@ -3,6 +3,7 @@
 .home {
   background-image: url('../../assets//images/pokeball.jpeg');
   background-position: center;
+  height: 100vh;
 
   .home__header {
     display: flex;
@@ -27,7 +28,7 @@
     align-items: center;
   }
 
-  @media screen and (min-width: $break-width-xl) {
-    height: 100vh;
-  }
+  // @media screen and (min-width: $break-width-xl) {
+  //   height: 100vh;
+  // }
 }

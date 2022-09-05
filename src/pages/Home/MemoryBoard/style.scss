@@ -40,7 +40,8 @@
 
     &.memoryBoard__item-front {
       img {
-        width: 65%;
+        overflow: auto;
+        padding: 12px;
       }
     }
   }

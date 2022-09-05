@@ -49,7 +49,7 @@ const Home: React.FC = () => {
         console.log("Acerto");
         setTimeout(function () {
           setPokemonList((state) => {
-            return state.filter((item) => item.name !== selectes[0].name);
+            return state.filter((item) => item.name !== selectes[0].name).sort(()=> Math.random() - 0.5);
           })
         }, 1500);
       } else {
@@ -78,6 +78,8 @@ const Home: React.FC = () => {
     const pokemonMemoryBoard: IPokemonMemoryBoard[] = pokemonList.map((item, i) => {
       return { ...item, id: i }
     });
+
+    pokemonMemoryBoard.sort(()=> Math.random() - 0.5);
 
     setPokemonList(pokemonMemoryBoard);
   }
